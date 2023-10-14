@@ -47,7 +47,7 @@ const getAllCategories = async () : Promise<Category[]> => {
 const getSingleCategory = async (categoryId: string) : Promise<Category> => {
     try {
         const res = await fetch(`${CATEGORIES_URL}/${categoryId}`);
-        return res.json()
+        return res.json();
         
     } catch (error) {
         console.log('getSingleCategory'.toUpperCase(),error);
@@ -55,25 +55,25 @@ const getSingleCategory = async (categoryId: string) : Promise<Category> => {
     }
 }
 
-const getAllColors = async () : Promise<Color> => {
+const getAllColors = async () : Promise<Color[]> => {
     try {
         const res = await fetch(COLORS_URL);
         return res.json();
         
     } catch (error) {
         console.log('getAllColors'.toUpperCase(),error);
-        return emptyColor;
+        return [];
     }
 }
 
-const getAllSizes = async () : Promise<Size> => {
+const getAllSizes = async () : Promise<Size[]> => {
     try {
         const res = await fetch(SIZES_URL);
         return res.json();
         
     } catch (error) {
         console.log('getAllColors'.toUpperCase(),error);
-        return emptySize;
+        return [];
     }
 }
 
