@@ -5,7 +5,7 @@ import {
 import Billboard from "@/components/ui/billboard";
 
 import { Container } from "@/components/ui/container";
-import ProductList from "@/components/product-list";
+import { ProductList } from "@/components/product-list";
 
 export const revalidate = 0;
 

@@ -104,7 +104,6 @@ const getSingleProduct = async (productId: string): Promise<Product> => {
         const res = await fetch(`${PRODUCTS_URL}/${productId}`);
         return res.json();
         
-        
     } catch (error) {
         console.log('getAllColors'.toUpperCase(),error);
         return emptyProduct;

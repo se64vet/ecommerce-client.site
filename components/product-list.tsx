@@ -7,7 +7,7 @@ interface ProductListProps {
   items: Product[]
 }
 
-const ProductList = ({
+export const ProductList = ({
   title,
   items
 } : ProductListProps) => {
@@ -24,4 +24,4 @@ const ProductList = ({
    );
 }
  
-export default ProductList;
+  

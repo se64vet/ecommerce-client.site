@@ -20,24 +20,25 @@ const Filter: React.FC<FilterProps> = ({
 }) => {
   const searchParams = useSearchParams();
   const router = useRouter();
-
   const selectedValue = searchParams.get(valueKey);
-  
-  const onClick = (id: string) => {
-    const current = qs.parse(searchParams.toString());
 
-    const query = {
-      ...current,
+  const onFiltering = (id: string) => {
+    // parse filter property id to query queue
+    const currentQueries = qs.parse(searchParams.toString());
+    const newQuery = {
+      ...currentQueries,
       [valueKey]: id
     };
 
-    if (current[valueKey] === id) {
-      query[valueKey] = null;
+    // remove id from query queue if filter deselected
+    if (currentQueries[valueKey] === id) {
+      newQuery[valueKey] = null;
     }
 
+    // finalize url and navigate to target url
     const url = qs.stringifyUrl({
       url: window.location.href,
-      query,
+      query: newQuery,
     }, { skipNull: true });
 
     router.push(url);
@@ -57,7 +58,7 @@ const Filter: React.FC<FilterProps> = ({
                 'rounded-md text-sm text-gray-800 p-2 bg-white border border-gray-200 cursor-pointer hover:bg-gray-200',
                 selectedValue === filter.id && 'bg-black text-white hover:bg-black'
               )}
-              onClick={() => onClick(filter.id)}
+              onClick={() => onFiltering(filter.id)}
             >
               {filter.name}
             </div>
